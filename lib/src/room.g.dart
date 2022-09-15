@@ -20,6 +20,9 @@ Room _$RoomFromJson(Map<String, dynamic> json) => Room(
       users: (json['users'] as List<dynamic>)
           .map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
+      unreadMsgCounter: (json['unreadMsgCounter'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList(),
     );
 
 Map<String, dynamic> _$RoomToJson(Room instance) {
@@ -31,6 +34,7 @@ Map<String, dynamic> _$RoomToJson(Room instance) {
     }
   }
 
+  writeNotNull('unreadMsgCounter', instance.unreadMsgCounter);
   writeNotNull('createdAt', instance.createdAt);
   val['id'] = instance.id;
   writeNotNull('imageUrl', instance.imageUrl);

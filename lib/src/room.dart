@@ -25,6 +25,7 @@ abstract class Room extends Equatable {
     required this.type,
     this.updatedAt,
     required this.users,
+    this.unreadMsgCounter,
   });
 
   const factory Room({
@@ -37,10 +38,16 @@ abstract class Room extends Equatable {
     required RoomType? type,
     int? updatedAt,
     required List<User> users,
+    List<int>? unreadMsgCounter,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
   factory Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);
+
+  /// sajad unread messages counter. has only two indexes.
+  /// index 0: the first user in users list (from this room)
+  /// index 1: the second user in users list (from this room)
+  final List<int>? unreadMsgCounter;
 
   /// Created room timestamp, in ms.
   final int? createdAt;
@@ -83,6 +90,7 @@ abstract class Room extends Equatable {
         type,
         updatedAt,
         users,
+        unreadMsgCounter,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -101,6 +109,7 @@ abstract class Room extends Equatable {
     RoomType? type,
     int? updatedAt,
     List<User>? users,
+    List<int>? unreadMsgCounter,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -119,6 +128,7 @@ class _Room extends Room {
     required super.type,
     super.updatedAt,
     required super.users,
+    super.unreadMsgCounter,
   }) : super._();
 
   @override
@@ -132,21 +142,19 @@ class _Room extends Room {
     dynamic type = _Unset,
     dynamic updatedAt = _Unset,
     List<User>? users,
+    dynamic unreadMsgCounter = _Unset,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
         id: id ?? this.id,
         imageUrl: imageUrl == _Unset ? this.imageUrl : imageUrl as String?,
-        lastMessages: lastMessages == _Unset
-            ? this.lastMessages
-            : lastMessages as List<Message>?,
-        metadata: metadata == _Unset
-            ? this.metadata
-            : metadata as Map<String, dynamic>?,
+        lastMessages: lastMessages == _Unset ? this.lastMessages : lastMessages as List<Message>?,
+        metadata: metadata == _Unset ? this.metadata : metadata as Map<String, dynamic>?,
         name: name == _Unset ? this.name : name as String?,
         type: type == _Unset ? this.type : type as RoomType?,
         updatedAt: updatedAt == _Unset ? this.updatedAt : updatedAt as int?,
         users: users ?? this.users,
+        unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>?,
       );
 }
 
