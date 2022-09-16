@@ -22,6 +22,7 @@ abstract class User extends Equatable {
     this.metadata,
     this.role,
     this.updatedAt,
+    this.profileName,
   });
 
   const factory User({
@@ -34,6 +35,7 @@ abstract class User extends Equatable {
     Map<String, dynamic>? metadata,
     Role? role,
     int? updatedAt,
+    String? profileName,
   }) = _User;
 
   /// Creates user from a map (decoded JSON).
@@ -44,6 +46,7 @@ abstract class User extends Equatable {
 
   /// First name of the user.
   final String? firstName;
+  final String? profileName;
 
   /// Unique ID of the user.
   final String id;
@@ -78,6 +81,7 @@ abstract class User extends Equatable {
         metadata,
         role,
         updatedAt,
+        profileName,
       ];
 
   User copyWith({
@@ -90,6 +94,7 @@ abstract class User extends Equatable {
     Map<String, dynamic>? metadata,
     Role? role,
     int? updatedAt,
+    String? profileName,
   });
 
   /// Converts user to the map representation, encodable to JSON.
@@ -108,6 +113,7 @@ class _User extends User {
     super.metadata,
     super.role,
     super.updatedAt,
+    super.profileName,
   }) : super._();
 
   @override
@@ -121,6 +127,7 @@ class _User extends User {
     dynamic metadata = _Unset,
     dynamic role = _Unset,
     dynamic updatedAt = _Unset,
+    dynamic profileName = _Unset,
   }) =>
       _User(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -129,11 +136,10 @@ class _User extends User {
         imageUrl: imageUrl == _Unset ? this.imageUrl : imageUrl as String?,
         lastName: lastName == _Unset ? this.lastName : lastName as String?,
         lastSeen: lastSeen == _Unset ? this.lastSeen : lastSeen as int?,
-        metadata: metadata == _Unset
-            ? this.metadata
-            : metadata as Map<String, dynamic>?,
+        metadata: metadata == _Unset ? this.metadata : metadata as Map<String, dynamic>?,
         role: role == _Unset ? this.role : role as Role?,
         updatedAt: updatedAt == _Unset ? this.updatedAt : updatedAt as int?,
+        profileName: profileName == _Unset ? this.profileName : profileName as String?,
       );
 }
 

@@ -25,7 +25,8 @@ abstract class Room extends Equatable {
     required this.type,
     this.updatedAt,
     required this.users,
-    this.unreadMsgCounter,
+    required this.unreadMsgCounter,
+    this.isPinnedTop,
   });
 
   const factory Room({
@@ -38,7 +39,8 @@ abstract class Room extends Equatable {
     required RoomType? type,
     int? updatedAt,
     required List<User> users,
-    List<int>? unreadMsgCounter,
+    required List<int> unreadMsgCounter,
+    bool? isPinnedTop,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
@@ -47,7 +49,10 @@ abstract class Room extends Equatable {
   /// sajad unread messages counter. has only two indexes.
   /// index 0: the first user in users list (from this room)
   /// index 1: the second user in users list (from this room)
-  final List<int>? unreadMsgCounter;
+  final List<int> unreadMsgCounter;
+
+  /// sajad: if true, the room is pinned to the top of the list
+  final bool? isPinnedTop;
 
   /// Created room timestamp, in ms.
   final int? createdAt;
@@ -91,6 +96,7 @@ abstract class Room extends Equatable {
         updatedAt,
         users,
         unreadMsgCounter,
+        isPinnedTop,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -109,7 +115,8 @@ abstract class Room extends Equatable {
     RoomType? type,
     int? updatedAt,
     List<User>? users,
-    List<int>? unreadMsgCounter,
+    List<int> unreadMsgCounter,
+    bool? isPinnedTop,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -128,7 +135,8 @@ class _Room extends Room {
     required super.type,
     super.updatedAt,
     required super.users,
-    super.unreadMsgCounter,
+    required super.unreadMsgCounter,
+    super.isPinnedTop,
   }) : super._();
 
   @override
@@ -143,6 +151,7 @@ class _Room extends Room {
     dynamic updatedAt = _Unset,
     List<User>? users,
     dynamic unreadMsgCounter = _Unset,
+    dynamic isPinnedTop = _Unset,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -154,7 +163,8 @@ class _Room extends Room {
         type: type == _Unset ? this.type : type as RoomType?,
         updatedAt: updatedAt == _Unset ? this.updatedAt : updatedAt as int?,
         users: users ?? this.users,
-        unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>?,
+        unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>,
+        isPinnedTop: isPinnedTop == _Unset ? this.isPinnedTop : isPinnedTop as bool?,
       );
 }
 
