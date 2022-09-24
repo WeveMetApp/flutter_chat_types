@@ -27,6 +27,7 @@ abstract class Room extends Equatable {
     required this.users,
     required this.unreadMsgCounter,
     this.isPinnedTop,
+    this.pinnedTopDate,
   });
 
   const factory Room({
@@ -41,6 +42,7 @@ abstract class Room extends Equatable {
     required List<User> users,
     required List<int> unreadMsgCounter,
     bool? isPinnedTop,
+    int? pinnedTopDate,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
@@ -53,6 +55,7 @@ abstract class Room extends Equatable {
 
   /// sajad: if true, the room is pinned to the top of the list
   final bool? isPinnedTop;
+  final int? pinnedTopDate;
 
   /// Created room timestamp, in ms.
   final int? createdAt;
@@ -97,6 +100,7 @@ abstract class Room extends Equatable {
         users,
         unreadMsgCounter,
         isPinnedTop,
+        pinnedTopDate,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -117,6 +121,7 @@ abstract class Room extends Equatable {
     List<User>? users,
     List<int> unreadMsgCounter,
     bool? isPinnedTop,
+    int? pinnedTopDate,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -137,6 +142,7 @@ class _Room extends Room {
     required super.users,
     required super.unreadMsgCounter,
     super.isPinnedTop,
+    super.pinnedTopDate,
   }) : super._();
 
   @override
@@ -152,6 +158,7 @@ class _Room extends Room {
     List<User>? users,
     dynamic unreadMsgCounter = _Unset,
     dynamic isPinnedTop = _Unset,
+    dynamic pinnedTopDate = _Unset,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -165,6 +172,7 @@ class _Room extends Room {
         users: users ?? this.users,
         unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>,
         isPinnedTop: isPinnedTop == _Unset ? this.isPinnedTop : isPinnedTop as bool?,
+        pinnedTopDate: pinnedTopDate == _Unset ? this.pinnedTopDate : pinnedTopDate as int?,
       );
 }
 
