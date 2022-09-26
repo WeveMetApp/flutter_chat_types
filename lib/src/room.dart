@@ -28,6 +28,8 @@ abstract class Room extends Equatable {
     required this.unreadMsgCounter,
     this.isPinnedTop,
     this.pinnedTopDate,
+    required this.userIds,
+    required this.userLeftRoom,
   });
 
   const factory Room({
@@ -43,6 +45,8 @@ abstract class Room extends Equatable {
     required List<int> unreadMsgCounter,
     bool? isPinnedTop,
     int? pinnedTopDate,
+    required List<String> userIds,
+    required List<bool> userLeftRoom,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
@@ -52,6 +56,16 @@ abstract class Room extends Equatable {
   /// index 0: the first user in users list (from this room)
   /// index 1: the second user in users list (from this room)
   final List<int> unreadMsgCounter;
+
+  /// [userLeftRoom]
+  /// index 0: the first user in users list (from this room)
+  /// index 1: the second user in users list (from this room)
+  final List<bool> userLeftRoom;
+
+  /// [userIds]
+  /// index 0: the first user in users list (from this room)
+  /// index 1: the second user in users list (from this room)
+  final List<String> userIds;
 
   /// sajad: if true, the room is pinned to the top of the list
   final bool? isPinnedTop;
@@ -101,6 +115,8 @@ abstract class Room extends Equatable {
         unreadMsgCounter,
         isPinnedTop,
         pinnedTopDate,
+        userIds,
+        userLeftRoom,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -122,6 +138,8 @@ abstract class Room extends Equatable {
     List<int> unreadMsgCounter,
     bool? isPinnedTop,
     int? pinnedTopDate,
+    List<String> userIds,
+    List<bool> userLeftRoom,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -143,6 +161,8 @@ class _Room extends Room {
     required super.unreadMsgCounter,
     super.isPinnedTop,
     super.pinnedTopDate,
+    required super.userIds,
+    required super.userLeftRoom,
   }) : super._();
 
   @override
@@ -159,6 +179,8 @@ class _Room extends Room {
     dynamic unreadMsgCounter = _Unset,
     dynamic isPinnedTop = _Unset,
     dynamic pinnedTopDate = _Unset,
+    dynamic userIds = _Unset,
+    dynamic userLeftRoom = _Unset,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -173,6 +195,8 @@ class _Room extends Room {
         unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>,
         isPinnedTop: isPinnedTop == _Unset ? this.isPinnedTop : isPinnedTop as bool?,
         pinnedTopDate: pinnedTopDate == _Unset ? this.pinnedTopDate : pinnedTopDate as int?,
+        userIds: userIds == _Unset ? this.userIds : userIds as List<String>,
+        userLeftRoom: userLeftRoom == _Unset ? this.userLeftRoom : userLeftRoom as List<bool>,
       );
 }
 
