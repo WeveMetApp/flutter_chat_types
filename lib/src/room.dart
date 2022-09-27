@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_chat_types/src/messages/room_user.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -25,13 +26,14 @@ abstract class Room extends Equatable {
     required this.type,
     this.updatedAt,
     required this.users,
-    required this.unreadMsgCounter,
+    // required this.unreadMsgCounter,
     this.isPinnedTop,
     this.pinnedTopDate,
-    required this.userIds,
-    required this.userLeftRoom,
+    // required this.userIds,
+    // required this.userLeftRoom,
     this.lastMessage,
-    required this.userBlocked,
+    // required this.userBlocked,
+    required this.roomUsers,
   });
 
   const factory Room({
@@ -44,37 +46,41 @@ abstract class Room extends Equatable {
     required RoomType? type,
     int? updatedAt,
     required List<User> users,
-    required List<int> unreadMsgCounter,
+    // required List<int> unreadMsgCounter,
     bool? isPinnedTop,
     int? pinnedTopDate,
-    required List<String> userIds,
-    required List<bool> userLeftRoom,
+    // required List<String> userIds,
+    // required List<bool> userLeftRoom,
     String? lastMessage,
-    required List<bool> userBlocked,
+    // required List<bool> userBlocked,
+    required List<RoomUser> roomUsers,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
   factory Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);
 
+  final List<RoomUser> roomUsers;
+  // final RoomUser user2;
+
   /// sajad unread messages counter. has only two indexes.
   /// index 0: the first user in userIds list (from this room)
   /// index 1: the second user in userIds list (from this room)
-  final List<int> unreadMsgCounter;
+  // final List<int> unreadMsgCounter;
 
   /// [userLeftRoom]
   /// index 0: the first user in userIds list (from this room)
   /// index 1: the second user in userIds list (from this room)
-  final List<bool> userLeftRoom;
+  // final List<bool> userLeftRoom;
 
   /// [userBlocked]
   /// index 0: the first user in userIds list (from this room)
   /// index 1: the second user in userIds list (from this room)
-  final List<bool> userBlocked;
+  // final List<bool> userBlocked;
 
   /// [userIds]
   /// index 0: the first user in userIds list (from this room)
   /// index 1: the second user in userIds list (from this room)
-  final List<String> userIds;
+  // final List<String> userIds;
 
   /// sajad: if true, the room is pinned to the top of the list
   final bool? isPinnedTop;
@@ -124,13 +130,14 @@ abstract class Room extends Equatable {
         type,
         updatedAt,
         users,
-        unreadMsgCounter,
+        // unreadMsgCounter,
         isPinnedTop,
         pinnedTopDate,
-        userIds,
-        userLeftRoom,
+        // userIds,
+        // userLeftRoom,
         lastMessage,
-        userBlocked,
+        // userBlocked,
+        roomUsers,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -149,13 +156,14 @@ abstract class Room extends Equatable {
     RoomType? type,
     int? updatedAt,
     List<User>? users,
-    List<int> unreadMsgCounter,
+    // List<int> unreadMsgCounter,
     bool? isPinnedTop,
     int? pinnedTopDate,
-    List<String> userIds,
-    List<bool> userLeftRoom,
+    // List<String> userIds,
+    // List<bool> userLeftRoom,
     String? lastMessage,
-    List<bool> userBlocked,
+    // List<bool> userBlocked,
+    List<RoomUser>? roomUsers,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -174,13 +182,14 @@ class _Room extends Room {
     required super.type,
     super.updatedAt,
     required super.users,
-    required super.unreadMsgCounter,
+    // required super.unreadMsgCounter,
     super.isPinnedTop,
     super.pinnedTopDate,
-    required super.userIds,
-    required super.userLeftRoom,
+    // required super.userIds,
+    // required super.userLeftRoom,
     super.lastMessage,
-    required super.userBlocked,
+    // required super.userBlocked,
+    required super.roomUsers,
   }) : super._();
 
   @override
@@ -194,13 +203,14 @@ class _Room extends Room {
     dynamic type = _Unset,
     dynamic updatedAt = _Unset,
     List<User>? users,
-    dynamic unreadMsgCounter = _Unset,
+    // dynamic unreadMsgCounter = _Unset,
     dynamic isPinnedTop = _Unset,
     dynamic pinnedTopDate = _Unset,
-    dynamic userIds = _Unset,
-    dynamic userLeftRoom = _Unset,
+    // dynamic userIds = _Unset,
+    // dynamic userLeftRoom = _Unset,
     dynamic lastMessage = _Unset,
-    dynamic userBlocked = _Unset,
+    // dynamic userBlocked = _Unset,
+    List<RoomUser>? roomUsers,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -212,13 +222,14 @@ class _Room extends Room {
         type: type == _Unset ? this.type : type as RoomType?,
         updatedAt: updatedAt == _Unset ? this.updatedAt : updatedAt as int?,
         users: users ?? this.users,
-        unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>,
+        // unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>,
         isPinnedTop: isPinnedTop == _Unset ? this.isPinnedTop : isPinnedTop as bool?,
         pinnedTopDate: pinnedTopDate == _Unset ? this.pinnedTopDate : pinnedTopDate as int?,
-        userIds: userIds == _Unset ? this.userIds : userIds as List<String>,
-        userLeftRoom: userLeftRoom == _Unset ? this.userLeftRoom : userLeftRoom as List<bool>,
+        // userIds: userIds == _Unset ? this.userIds : userIds as List<String>,
+        // userLeftRoom: userLeftRoom == _Unset ? this.userLeftRoom : userLeftRoom as List<bool>,
         lastMessage: lastMessage == _Unset ? this.lastMessage : lastMessage as String?,
-        userBlocked: userBlocked == _Unset ? this.userBlocked : userBlocked as List<bool>,
+        // userBlocked: userBlocked == _Unset ? this.userBlocked : userBlocked as List<bool>,
+        roomUsers: roomUsers ?? this.roomUsers,
       );
 }
 

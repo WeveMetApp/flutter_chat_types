@@ -20,27 +20,17 @@ Room _$RoomFromJson(Map<String, dynamic> json) => Room(
       users: (json['users'] as List<dynamic>)
           .map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
-      unreadMsgCounter: (json['unreadMsgCounter'] as List<dynamic>)
-          .map((e) => e as int)
-          .toList(),
       isPinnedTop: json['isPinnedTop'] as bool?,
       pinnedTopDate: json['pinnedTopDate'] as int?,
-      userIds:
-          (json['userIds'] as List<dynamic>).map((e) => e as String).toList(),
-      userLeftRoom: (json['userLeftRoom'] as List<dynamic>)
-          .map((e) => e as bool)
-          .toList(),
       lastMessage: json['lastMessage'] as String?,
-      userBlocked:
-          (json['userBlocked'] as List<dynamic>).map((e) => e as bool).toList(),
+      roomUsers: (json['roomUsers'] as List<dynamic>)
+          .map((e) => RoomUser.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$RoomToJson(Room instance) {
   final val = <String, dynamic>{
-    'unreadMsgCounter': instance.unreadMsgCounter,
-    'userLeftRoom': instance.userLeftRoom,
-    'userBlocked': instance.userBlocked,
-    'userIds': instance.userIds,
+    'roomUsers': instance.roomUsers.map((e) => e.toJson()).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {
