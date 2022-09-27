@@ -30,6 +30,8 @@ abstract class Room extends Equatable {
     this.pinnedTopDate,
     required this.userIds,
     required this.userLeftRoom,
+    this.lastMessage,
+    required this.userBlocked,
   });
 
   const factory Room({
@@ -47,24 +49,31 @@ abstract class Room extends Equatable {
     int? pinnedTopDate,
     required List<String> userIds,
     required List<bool> userLeftRoom,
+    String? lastMessage,
+    required List<bool> userBlocked,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
   factory Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);
 
   /// sajad unread messages counter. has only two indexes.
-  /// index 0: the first user in users list (from this room)
-  /// index 1: the second user in users list (from this room)
+  /// index 0: the first user in userIds list (from this room)
+  /// index 1: the second user in userIds list (from this room)
   final List<int> unreadMsgCounter;
 
   /// [userLeftRoom]
-  /// index 0: the first user in users list (from this room)
-  /// index 1: the second user in users list (from this room)
+  /// index 0: the first user in userIds list (from this room)
+  /// index 1: the second user in userIds list (from this room)
   final List<bool> userLeftRoom;
 
+  /// [userBlocked]
+  /// index 0: the first user in userIds list (from this room)
+  /// index 1: the second user in userIds list (from this room)
+  final List<bool> userBlocked;
+
   /// [userIds]
-  /// index 0: the first user in users list (from this room)
-  /// index 1: the second user in users list (from this room)
+  /// index 0: the first user in userIds list (from this room)
+  /// index 1: the second user in userIds list (from this room)
   final List<String> userIds;
 
   /// sajad: if true, the room is pinned to the top of the list
@@ -73,6 +82,9 @@ abstract class Room extends Equatable {
 
   /// Created room timestamp, in ms.
   final int? createdAt;
+
+  /// Sajad: last message sent in this room
+  final String? lastMessage;
 
   /// Room's unique ID.
   final String id;
@@ -117,6 +129,8 @@ abstract class Room extends Equatable {
         pinnedTopDate,
         userIds,
         userLeftRoom,
+        lastMessage,
+        userBlocked,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -140,6 +154,8 @@ abstract class Room extends Equatable {
     int? pinnedTopDate,
     List<String> userIds,
     List<bool> userLeftRoom,
+    String? lastMessage,
+    List<bool> userBlocked,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -163,6 +179,8 @@ class _Room extends Room {
     super.pinnedTopDate,
     required super.userIds,
     required super.userLeftRoom,
+    super.lastMessage,
+    required super.userBlocked,
   }) : super._();
 
   @override
@@ -181,6 +199,8 @@ class _Room extends Room {
     dynamic pinnedTopDate = _Unset,
     dynamic userIds = _Unset,
     dynamic userLeftRoom = _Unset,
+    dynamic lastMessage = _Unset,
+    dynamic userBlocked = _Unset,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -197,6 +217,8 @@ class _Room extends Room {
         pinnedTopDate: pinnedTopDate == _Unset ? this.pinnedTopDate : pinnedTopDate as int?,
         userIds: userIds == _Unset ? this.userIds : userIds as List<String>,
         userLeftRoom: userLeftRoom == _Unset ? this.userLeftRoom : userLeftRoom as List<bool>,
+        lastMessage: lastMessage == _Unset ? this.lastMessage : lastMessage as String?,
+        userBlocked: userBlocked == _Unset ? this.userBlocked : userBlocked as List<bool>,
       );
 }
 
