@@ -10,6 +10,8 @@ class RoomUser {
     required this.unreadMsgCounter,
     required this.isLeftRoom,
     required this.isAnonymous,
+    this.ispinnedTop,
+    this.pinnedTopDate,
   });
 
   factory RoomUser.fromJson(Map<String, dynamic> data) => _$RoomUserFromJson(data);
@@ -19,6 +21,8 @@ class RoomUser {
   int unreadMsgCounter;
   bool isLeftRoom;
   bool isAnonymous;
+  bool? ispinnedTop;
+  int? pinnedTopDate;
 
   Map<String, dynamic> toJson() => _$RoomUserToJson(this);
 }
