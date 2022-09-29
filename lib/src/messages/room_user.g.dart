@@ -11,6 +11,7 @@ RoomUser _$RoomUserFromJson(Map<String, dynamic> json) => RoomUser(
       isBlockedOtherUser: json['isBlockedOtherUser'] as bool,
       unreadMsgCounter: json['unreadMsgCounter'] as int,
       isLeftRoom: json['isLeftRoom'] as bool,
+      isAnonymous: json['isAnonymous'] as bool,
     );
 
 Map<String, dynamic> _$RoomUserToJson(RoomUser instance) => <String, dynamic>{
@@ -18,4 +19,5 @@ Map<String, dynamic> _$RoomUserToJson(RoomUser instance) => <String, dynamic>{
       'isBlockedOtherUser': instance.isBlockedOtherUser,
       'unreadMsgCounter': instance.unreadMsgCounter,
       'isLeftRoom': instance.isLeftRoom,
+      'isAnonymous': instance.isAnonymous,
     };

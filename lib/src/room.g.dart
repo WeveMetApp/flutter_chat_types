@@ -20,8 +20,8 @@ Room _$RoomFromJson(Map<String, dynamic> json) => Room(
       users: (json['users'] as List<dynamic>)
           .map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
-      isPinnedTop: json['isPinnedTop'] as bool?,
-      pinnedTopDate: json['pinnedTopDate'] as int?,
+      userIds:
+          (json['userIds'] as List<dynamic>).map((e) => e as String).toList(),
       lastMessage: json['lastMessage'] as String?,
       roomUsers: (json['roomUsers'] as List<dynamic>)
           .map((e) => RoomUser.fromJson(e as Map<String, dynamic>))
@@ -31,6 +31,7 @@ Room _$RoomFromJson(Map<String, dynamic> json) => Room(
 Map<String, dynamic> _$RoomToJson(Room instance) {
   final val = <String, dynamic>{
     'roomUsers': instance.roomUsers.map((e) => e.toJson()).toList(),
+    'userIds': instance.userIds,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -39,8 +40,6 @@ Map<String, dynamic> _$RoomToJson(Room instance) {
     }
   }
 
-  writeNotNull('isPinnedTop', instance.isPinnedTop);
-  writeNotNull('pinnedTopDate', instance.pinnedTopDate);
   writeNotNull('createdAt', instance.createdAt);
   writeNotNull('lastMessage', instance.lastMessage);
   val['id'] = instance.id;

@@ -9,14 +9,16 @@ class RoomUser {
     required this.isBlockedOtherUser,
     required this.unreadMsgCounter,
     required this.isLeftRoom,
+    required this.isAnonymous,
   });
 
   factory RoomUser.fromJson(Map<String, dynamic> data) => _$RoomUserFromJson(data);
 
   final String userId;
-  final bool isBlockedOtherUser;
-  final int unreadMsgCounter;
-  final bool isLeftRoom;
+  bool isBlockedOtherUser;
+  int unreadMsgCounter;
+  bool isLeftRoom;
+  bool isAnonymous;
 
   Map<String, dynamic> toJson() => _$RoomUserToJson(this);
 }

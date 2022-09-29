@@ -26,13 +26,10 @@ abstract class Room extends Equatable {
     required this.type,
     this.updatedAt,
     required this.users,
-    // required this.unreadMsgCounter,
-    this.isPinnedTop,
-    this.pinnedTopDate,
-    // required this.userIds,
-    // required this.userLeftRoom,
+    // this.isPinnedTop,
+    // this.pinnedTopDate,
+    required this.userIds,
     this.lastMessage,
-    // required this.userBlocked,
     required this.roomUsers,
   });
 
@@ -46,13 +43,10 @@ abstract class Room extends Equatable {
     required RoomType? type,
     int? updatedAt,
     required List<User> users,
-    // required List<int> unreadMsgCounter,
-    bool? isPinnedTop,
-    int? pinnedTopDate,
-    // required List<String> userIds,
-    // required List<bool> userLeftRoom,
+    // bool? isPinnedTop,
+    // int? pinnedTopDate,
+    required List<String> userIds,
     String? lastMessage,
-    // required List<bool> userBlocked,
     required List<RoomUser> roomUsers,
   }) = _Room;
 
@@ -80,11 +74,11 @@ abstract class Room extends Equatable {
   /// [userIds]
   /// index 0: the first user in userIds list (from this room)
   /// index 1: the second user in userIds list (from this room)
-  // final List<String> userIds;
+  final List<String> userIds;
 
   /// sajad: if true, the room is pinned to the top of the list
-  final bool? isPinnedTop;
-  final int? pinnedTopDate;
+  // final bool? isPinnedTop;
+  // final int? pinnedTopDate;
 
   /// Created room timestamp, in ms.
   final int? createdAt;
@@ -131,9 +125,9 @@ abstract class Room extends Equatable {
         updatedAt,
         users,
         // unreadMsgCounter,
-        isPinnedTop,
-        pinnedTopDate,
-        // userIds,
+        // isPinnedTop,
+        // pinnedTopDate,
+        userIds,
         // userLeftRoom,
         lastMessage,
         // userBlocked,
@@ -157,9 +151,9 @@ abstract class Room extends Equatable {
     int? updatedAt,
     List<User>? users,
     // List<int> unreadMsgCounter,
-    bool? isPinnedTop,
-    int? pinnedTopDate,
-    // List<String> userIds,
+    // bool? isPinnedTop,
+    // int? pinnedTopDate,
+    List<String> userIds,
     // List<bool> userLeftRoom,
     String? lastMessage,
     // List<bool> userBlocked,
@@ -183,9 +177,9 @@ class _Room extends Room {
     super.updatedAt,
     required super.users,
     // required super.unreadMsgCounter,
-    super.isPinnedTop,
-    super.pinnedTopDate,
-    // required super.userIds,
+    // super.isPinnedTop,
+    // super.pinnedTopDate,
+    required super.userIds,
     // required super.userLeftRoom,
     super.lastMessage,
     // required super.userBlocked,
@@ -204,9 +198,9 @@ class _Room extends Room {
     dynamic updatedAt = _Unset,
     List<User>? users,
     // dynamic unreadMsgCounter = _Unset,
-    dynamic isPinnedTop = _Unset,
-    dynamic pinnedTopDate = _Unset,
-    // dynamic userIds = _Unset,
+    // dynamic isPinnedTop = _Unset,
+    // dynamic pinnedTopDate = _Unset,
+    dynamic userIds = _Unset,
     // dynamic userLeftRoom = _Unset,
     dynamic lastMessage = _Unset,
     // dynamic userBlocked = _Unset,
@@ -223,9 +217,9 @@ class _Room extends Room {
         updatedAt: updatedAt == _Unset ? this.updatedAt : updatedAt as int?,
         users: users ?? this.users,
         // unreadMsgCounter: unreadMsgCounter == _Unset ? this.unreadMsgCounter : unreadMsgCounter as List<int>,
-        isPinnedTop: isPinnedTop == _Unset ? this.isPinnedTop : isPinnedTop as bool?,
-        pinnedTopDate: pinnedTopDate == _Unset ? this.pinnedTopDate : pinnedTopDate as int?,
-        // userIds: userIds == _Unset ? this.userIds : userIds as List<String>,
+        // isPinnedTop: isPinnedTop == _Unset ? this.isPinnedTop : isPinnedTop as bool?,
+        // pinnedTopDate: pinnedTopDate == _Unset ? this.pinnedTopDate : pinnedTopDate as int?,
+        userIds: userIds == _Unset ? this.userIds : userIds as List<String>,
         // userLeftRoom: userLeftRoom == _Unset ? this.userLeftRoom : userLeftRoom as List<bool>,
         lastMessage: lastMessage == _Unset ? this.lastMessage : lastMessage as String?,
         // userBlocked: userBlocked == _Unset ? this.userBlocked : userBlocked as List<bool>,
