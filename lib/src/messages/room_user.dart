@@ -9,6 +9,7 @@ class RoomUser {
     required this.isBlockedOtherUser,
     required this.unreadMsgCounter,
     required this.isLeftRoom,
+    this.isLeftRoomDate,
     required this.isAnonymous,
     this.ispinnedTop,
     this.pinnedTopDate,
@@ -20,6 +21,7 @@ class RoomUser {
   bool isBlockedOtherUser;
   int unreadMsgCounter;
   bool isLeftRoom;
+  int? isLeftRoomDate;
   bool isAnonymous;
   bool? ispinnedTop;
   int? pinnedTopDate;
