@@ -31,6 +31,7 @@ abstract class Room extends Equatable {
     required this.userIds,
     this.lastMessage,
     required this.roomUsers,
+    this.isAlwaysPinnedTop,
   });
 
   const factory Room({
@@ -48,10 +49,13 @@ abstract class Room extends Equatable {
     required List<String> userIds,
     String? lastMessage,
     required List<RoomUser> roomUsers,
+    bool? isAlwaysPinnedTop,
   }) = _Room;
 
   /// Creates room from a map (decoded JSON).
   factory Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);
+
+  final bool? isAlwaysPinnedTop;
 
   final List<RoomUser> roomUsers;
   // final RoomUser user2;
@@ -132,6 +136,7 @@ abstract class Room extends Equatable {
         lastMessage,
         // userBlocked,
         roomUsers,
+        isAlwaysPinnedTop,
       ];
 
   /// Creates a copy of the room with an updated data.
@@ -158,6 +163,7 @@ abstract class Room extends Equatable {
     String? lastMessage,
     // List<bool> userBlocked,
     List<RoomUser>? roomUsers,
+    bool? isAlwaysPinnedTop,
   });
 
   /// Converts room to the map representation, encodable to JSON.
@@ -184,6 +190,7 @@ class _Room extends Room {
     super.lastMessage,
     // required super.userBlocked,
     required super.roomUsers,
+    super.isAlwaysPinnedTop,
   }) : super._();
 
   @override
@@ -205,6 +212,7 @@ class _Room extends Room {
     dynamic lastMessage = _Unset,
     // dynamic userBlocked = _Unset,
     List<RoomUser>? roomUsers,
+    dynamic isAlwaysPinnedTop = _Unset,
   }) =>
       _Room(
         createdAt: createdAt == _Unset ? this.createdAt : createdAt as int?,
@@ -224,6 +232,7 @@ class _Room extends Room {
         lastMessage: lastMessage == _Unset ? this.lastMessage : lastMessage as String?,
         // userBlocked: userBlocked == _Unset ? this.userBlocked : userBlocked as List<bool>,
         roomUsers: roomUsers ?? this.roomUsers,
+        isAlwaysPinnedTop: isAlwaysPinnedTop == _Unset ? this.isAlwaysPinnedTop : isAlwaysPinnedTop as bool?,
       );
 }
 
