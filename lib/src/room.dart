@@ -26,8 +26,6 @@ abstract class Room extends Equatable {
     required this.type,
     this.updatedAt,
     required this.users,
-    // this.isPinnedTop,
-    // this.pinnedTopDate,
     required this.userIds,
     this.lastMessage,
     required this.roomUsers,
@@ -44,8 +42,6 @@ abstract class Room extends Equatable {
     required RoomType? type,
     int? updatedAt,
     required List<User> users,
-    // bool? isPinnedTop,
-    // int? pinnedTopDate,
     required List<String> userIds,
     String? lastMessage,
     required List<RoomUser> roomUsers,
@@ -58,7 +54,6 @@ abstract class Room extends Equatable {
   final bool? isAlwaysPinnedTop;
 
   final List<RoomUser> roomUsers;
-  // final RoomUser user2;
 
   /// sajad unread messages counter. has only two indexes.
   /// index 0: the first user in userIds list (from this room)
@@ -128,13 +123,8 @@ abstract class Room extends Equatable {
         type,
         updatedAt,
         users,
-        // unreadMsgCounter,
-        // isPinnedTop,
-        // pinnedTopDate,
         userIds,
-        // userLeftRoom,
         lastMessage,
-        // userBlocked,
         roomUsers,
         isAlwaysPinnedTop,
       ];
@@ -155,13 +145,8 @@ abstract class Room extends Equatable {
     RoomType? type,
     int? updatedAt,
     List<User>? users,
-    // List<int> unreadMsgCounter,
-    // bool? isPinnedTop,
-    // int? pinnedTopDate,
     List<String> userIds,
-    // List<bool> userLeftRoom,
     String? lastMessage,
-    // List<bool> userBlocked,
     List<RoomUser>? roomUsers,
     bool? isAlwaysPinnedTop,
   });
